@@ -6,7 +6,7 @@ After=docker.service
 [Service]
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/docker run --name=code-server -p 8443:8443 -v /storage/workspaces:/home/coder -v /home/nathaniel/.gitconfig:/home/coder/.gitconfig:ro -v /home/nathaniel/.ssh:/home/coder/.ssh:ro burnnat/code-server --allow-http --password "$PASSWORD"
+ExecStart=/usr/bin/docker run --name=code-server -p 8443:8443 -p 3000:3000 -v /storage/workspaces:/home/coder -v /home/nathaniel/.gitconfig:/home/coder/.gitconfig:ro -v /home/nathaniel/.ssh:/home/coder/.ssh:ro burnnat/code-server --allow-http --password "$PASSWORD"
 ExecStop=/usr/bin/docker stop -t 2 code-server
 ExecStopPost=/usr/bin/docker rm -f code-server
 
