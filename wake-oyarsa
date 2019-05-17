@@ -1,0 +1,2 @@
+#!/bin/sh
+wakeonlan b0:52:16:98:75:1a
