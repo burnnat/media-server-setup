@@ -1,0 +1,8 @@
+{
+  "name": "simple-slides-docker",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "simple-slides": "0.0.3"
+  }
+}
