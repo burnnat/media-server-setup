@@ -5,6 +5,23 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN sudo apt-get install -y \
 	nodejs
 
+# Install Python versions
+RUN sudo apt-get update
+RUN sudo apt-get install -y \
+	software-properties-common
+RUN sudo add-apt-repository ppa:deadsnakes/ppa
+RUN sudo apt-get update
+RUN sudo apt-get install -y \
+	python3.5 \
+	python3.5-venv \
+	python3.6 \
+	python3.6-venv \
+	python3.7 \
+	python3.7-venv \
+	python3.8 \
+	python3.8-venv \
+	python3.8-distutils
+
 # Install Home Assistant dependencies
 RUN sudo apt-get install -y \
 	python3-pip \
