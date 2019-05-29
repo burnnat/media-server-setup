@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "simple-slides": "0.0.3"
+    "simple-slides": "0.0.4"
   }
 }
