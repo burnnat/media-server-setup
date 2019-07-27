@@ -7,8 +7,9 @@ echo 'fs.inotify.max_user_watches=524288' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
 # Setup SystemD unit
-sudo ln -s /storage/workspaces/media-server-setup/code-server/code-server.service /etc/systemd/system/code-server.service
+sudo cp /storage/workspaces/media-server-setup/code-server/code-server.service /etc/systemd/system/
 sudo mkdir /etc/systemd/system/code-server.service.d/
+sudo systemctl enable code-server.service
 
 # Setup Apache proxy
 sudo ln -s /storage/workspaces/media-server-setup/code-server/code-server-http.conf /etc/apache2/sites-available/code-server.conf
