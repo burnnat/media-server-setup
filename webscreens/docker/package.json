@@ -1,8 +1,8 @@
 {
-  "name": "simple-slides-docker",
+  "name": "webscreens-docker",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "simple-slides": "0.0.7"
+    "webscreens": "0.0.8"
   }
 }
