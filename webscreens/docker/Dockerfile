@@ -5,4 +5,4 @@ ADD config.json /usr/src/app/
 WORKDIR /usr/src/app
 RUN npm install
 
-CMD [ "node", "node_modules/webscreens/index.js", "--config", "config.json" ]
+CMD [ "node", "node_modules/webscreens/index.js", "--port", "8033", "--config", "config.json" ]
