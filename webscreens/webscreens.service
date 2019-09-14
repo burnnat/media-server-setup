@@ -1,14 +1,14 @@
 [Unit]
-Description=Simple Slideshow
+Description=Webscreens
 Requires=docker.service
 After=docker.service
 
 [Service]
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/docker run --name=simple-slides -p 8033:8033 -v /storage/photos:/srv/slides:ro burnnat/simple-slides
-ExecStop=/usr/bin/docker stop -t 2 simple-slides
-ExecStopPost=/usr/bin/docker rm -f simple-slides
+ExecStart=/usr/bin/docker run --name=webscreens -p 8033:8033 -v /storage/photos:/srv/slides:ro burnnat/webscreens
+ExecStop=/usr/bin/docker stop -t 2 webscreens
+ExecStopPost=/usr/bin/docker rm -f webscreens
 
 [Install]
 WantedBy=multi-user.target
