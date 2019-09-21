@@ -1,4 +1,4 @@
 FROM homeassistant/home-assistant
 
-RUN apt-get update
-RUN apt-get install -y ssl-cert-check
+RUN wget -O /usr/local/bin/ssl-cert-check https://raw.githubusercontent.com/Matty9191/ssl-cert-check/master/ssl-cert-check
+RUN chmod +x /usr/local/bin/ssl-cert-check
