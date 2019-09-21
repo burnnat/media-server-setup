@@ -42,3 +42,13 @@ RUN sudo apt-get install -y \
 	libswscale-dev \
 	libavresample-dev \
 	libavfilter-dev
+
+# Install Webscreens/Puppeteer dependencies
+RUN sudo apt-get install -y \
+	libxcomposite1 \
+	libxtst6 \
+	libnss3 \
+	libcups2 \
+	libatk1.0-0 \
+	libatk-bridge2.0-0 \
+	libgtk-3-0
