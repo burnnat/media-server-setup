@@ -8,6 +8,10 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Sharp dependencies
+RUN apt-get update
+RUN apt-get install -y libvips
+
 ADD package.json /usr/src/app/
 ADD config.json /usr/src/app/
 WORKDIR /usr/src/app
