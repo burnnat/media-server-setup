@@ -43,6 +43,10 @@ RUN sudo apt-get install -y \
 	libavresample-dev \
 	libavfilter-dev
 
+# Install HDHomeRun dependencies
+RUN sudo apt-get install -y \
+	libhdhomerun4
+
 # Install Webscreens/Puppeteer dependencies
 RUN sudo apt-get install -y \
 	libxcomposite1 \

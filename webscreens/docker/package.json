@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "webscreens": "0.0.15"
+    "webscreens": "0.0.17"
   }
 }
