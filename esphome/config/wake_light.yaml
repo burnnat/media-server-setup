@@ -1,0 +1,53 @@
+esphome:
+  name: wake_light
+  platform: ESP8266
+  board: esp01
+
+wifi:
+  ssid: "DeepHeaven"
+  password: "Till We Have Faces"
+
+  ap:
+    ssid: "Wake-Light"
+    password: "hJyLDsXZxYbW"
+
+captive_portal:
+logger:
+api:
+ota:
+
+output:
+  - platform: gpio
+    id: led
+    pin:
+      number: GPIO2
+      inverted: True
+  - platform: esp8266_pwm
+    id: speaker
+    pin:
+      number: GPIO1
+      inverted: True
+    frequency: 440 Hz
+    min_power: 0.00
+    max_power: 0.50
+
+binary_sensor:
+  - platform: gpio
+    id: wake_reset
+    name: Wake Reset
+    pin: GPIO0
+    on_release:
+      then:
+        - light.turn_off: wake_status
+
+light:
+  - platform: binary
+    id: wake_status
+    name: Wake Status
+    output: led
+
+switch:
+  - platform: output
+    id: wake_tone
+    name: Wake Tone
+    output: speaker

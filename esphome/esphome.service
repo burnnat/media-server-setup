@@ -1,0 +1,16 @@
+[Unit]
+Description=ESPHome
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=3
+Type=notify
+NotifyAccess=all
+ExecStart=/usr/bin/systemd-docker run --name=esphome --net=host -v /storage/workspaces/media-server-setup/esphome/config:/config esphome/esphome
+ExecStop=/usr/bin/docker stop -t 2 esphome
+ExecStopPost=/usr/bin/docker rm -f esphome
+
+[Install]
+WantedBy=multi-user.target
