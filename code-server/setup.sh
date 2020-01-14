@@ -13,6 +13,6 @@ sudo mkdir /etc/systemd/system/code-server.service.d/
 sudo systemctl enable code-server.service
 
 # Setup Apache proxy
-sudo ln -s /storage/workspaces/media-server-setup/code-server/code-server-http.conf /etc/apache2/sites-available/code-server.conf
+sudo ln -s /storage/workspaces/media-server-setup/code-server/code-server.conf /etc/apache2/sites-available/code-server.conf
 sudo a2ensite code-server
 sudo systemctl restart apache2.service
