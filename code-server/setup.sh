@@ -13,6 +13,14 @@ sudo mkdir /etc/systemd/system/code-server.service.d/
 sudo systemctl enable code-server.service
 
 # Setup Apache proxy
-sudo ln -s /storage/workspaces/media-server-setup/code-server/code-server.conf /etc/apache2/sites-available/code-server.conf
+sudo ln -s /storage/workspaces/media-server-setup/code-server/code-server-setup.conf /etc/apache2/sites-available/code-server.conf
 sudo a2ensite code-server
+sudo systemctl restart apache2.service
+
+# Install SSL certificate
+sudo certbot certonly --standalone --preferred-challenges http-01 --http-01-port 8023 --email webmaster@burnskids.com -d code.na.burnskids.com
+
+# Restart Apache with HTTPS enabled
+sudo rm /etc/apache2/sites-available/code-server.conf
+sudo ln -s /storage/workspaces/media-server-setup/code-server/code-server.conf /etc/apache2/sites-available/code-server.conf
 sudo systemctl restart apache2.service
