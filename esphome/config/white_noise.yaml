@@ -95,7 +95,7 @@ light:
 switch:
   - platform: template
     id: track_airplane
-    name: Airplane Cabin
+    name: White Noise
     optimistic: true
     turn_on_action:
       then:
