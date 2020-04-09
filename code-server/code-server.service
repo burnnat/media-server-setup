@@ -6,7 +6,7 @@ After=docker.service
 [Service]
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/docker run --name=code-server --net=host -e PASSWORD -v /storage/workspaces:/home/coder -v /home/homeassistant/config/custom_components:/home/coder/home-assistant-config/live/custom_components:ro -v /home/nathaniel/.gitconfig:/home/coder/.gitconfig:ro -v /home/nathaniel/.ssh:/home/coder/.ssh:ro burnnat/code-server --allow-http
+ExecStart=/usr/bin/docker run --name=code-server --net=host -e PASSWORD -v /storage/workspaces:/home/coder -v /home/homeassistant/config/custom_components:/home/coder/home-assistant-config/live/custom_components:ro -v /home/nathaniel/.gitconfig:/home/coder/.gitconfig:ro -v /home/nathaniel/.ssh:/home/coder/.ssh:ro burnnat/code-server
 ExecStop=/usr/bin/docker stop -t 2 code-server
 ExecStopPost=/usr/bin/docker rm -f code-server
 

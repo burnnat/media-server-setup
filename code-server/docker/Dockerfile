@@ -7,23 +7,23 @@ RUN sudo apt-get install -y \
 
 # Install Python versions
 RUN sudo apt-get update
-RUN sudo apt-get install -y \
-	software-properties-common
-RUN sudo add-apt-repository ppa:deadsnakes/ppa
-RUN sudo apt-get update
-RUN sudo apt-get install -y \
-	python3.5 \
-	python3.5-dev \
-	python3.5-venv \
-	python3.6 \
-	python3.6-dev \
-	python3.6-venv \
-	python3.7 \
-	python3.7-dev \
-	python3.7-venv \
-	python3.8 \
-	python3.8-dev \
-	python3.8-venv
+#RUN sudo apt-get install -y \
+#	software-properties-common
+#RUN sudo add-apt-repository ppa:deadsnakes/ppa
+#RUN sudo apt-get update
+#RUN sudo apt-get install -y \
+#	python3.5 \
+#	python3.5-dev \
+#	python3.5-venv \
+#	python3.6 \
+#	python3.6-dev \
+#	python3.6-venv \
+#	python3.7 \
+#	python3.7-dev \
+#	python3.7-venv \
+#	python3.8 \
+#	python3.8-dev \
+#	python3.8-venv
 
 # Install Home Assistant dependencies
 RUN sudo apt-get install -y \
