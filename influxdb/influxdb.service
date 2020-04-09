@@ -1,0 +1,23 @@
+[Unit]
+Description=Influx DB
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=3
+Type=notify
+NotifyAccess=all
+ExecStart=/usr/bin/systemd-docker run \
+  --name=influxdb \
+  -p 3003:3003 \
+  -p 3004:8083 \
+  -p 8086:8086 \
+  -v /storage/data/influxdb:/var/lib/influxdb \
+  -v /storage/data/grafana:/var/lib/grafana \
+  philhawthorne/docker-influxdb-grafana:latest
+ExecStop=/usr/bin/docker stop -t 2 influxdb
+ExecStopPost=/usr/bin/docker rm -f influxdb
+
+[Install]
+WantedBy=multi-user.target
