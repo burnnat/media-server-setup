@@ -20,4 +20,5 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-0 */2 * * * /storage/tv/mythlink.sh
+0  */2 * * * /storage/tv/mythlink.sh
+20 4   * * * /storage/photos/move-videos.sh
