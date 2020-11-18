@@ -21,4 +21,5 @@
 # 
 # m h  dom mon dow   command
 0  */2 * * * /storage/tv/mythlink.sh
-20 4   * * * /storage/photos/move-videos.sh
+20 2   * * * /storage/photos/move-videos.sh
+45 6   * * * /storage/stop-backups.sh
