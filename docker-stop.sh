@@ -5,4 +5,4 @@ if [[ ! -f "$1/docker-compose.yml" ]] ; then
 fi
 
 cd $1
-sudo docker-compose up --detach --remove-orphans
+sudo docker-compose down --remove-orphans

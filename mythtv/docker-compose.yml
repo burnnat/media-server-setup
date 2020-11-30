@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mythtv:
+    image: sammonsjl/mythtv:30-fixes
+    container_name: mythtv
+    environment:
+      - CONFIG_MODE=0 # use 1 to enable config mode
+    volumes:
+      - config:/home/mythtv:nocopy
+      - data:/var/lib/mysql:nocopy
+      - /storage/backups:/storage/backups
+      - /storage/livetv:/storage/livetv
+      - /storage/dvr:/storage/dvr
+    hostname: mythbackend
+    network_mode: host
+    restart: unless-stopped
+volumes:
+  config:
+  data:
