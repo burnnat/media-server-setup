@@ -4,6 +4,7 @@ services:
     image: sammonsjl/mythtv:30-fixes
     container_name: mythtv
     environment:
+      - TZ=America/Detroit
       - CONFIG_MODE=0 # use 1 to enable config mode
     volumes:
       - config:/home/mythtv:nocopy
