@@ -1,0 +1,10 @@
+192.168.2.200:80 {
+  redir / /mythweb/
+  redir /mythweb /mythweb/
+  reverse_proxy /* localhost:6580
+
+  basicauth {
+    nathaniel {$MYTHTV_PASSWORD_NATHANIEL}
+    anna {$MYTHTV_PASSWORD_ANNA}
+  }
+}

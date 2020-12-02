@@ -1,8 +1,11 @@
 version: '3'
+
 services:
   mythtv:
     image: sammonsjl/mythtv:30-fixes
     container_name: mythtv
+    restart: unless-stopped
+
     environment:
       - TZ=America/Detroit
       - CONFIG_MODE=0 # use 1 to enable config mode
@@ -14,7 +17,7 @@ services:
       - /storage/dvr:/storage/dvr
     hostname: mythbackend
     network_mode: host
-    restart: unless-stopped
+
 volumes:
   config:
   data:

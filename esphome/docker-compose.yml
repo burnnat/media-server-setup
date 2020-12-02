@@ -4,8 +4,9 @@ services:
   esphome:
     image: esphome/esphome
     container_name: esphome
+    restart: unless-stopped
+
     volumes:
       - /storage/workspaces/media-server-setup/esphome/config:/config:rw
       - /etc/localtime:/etc/localtime:ro
     network_mode: host
-    restart: unless-stopped

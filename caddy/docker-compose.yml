@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  caddy:
+    image: caddy:alpine
+    container_name: caddy
+    restart: unless-stopped
+
+    environment:
+      MYTHTV_PASSWORD_NATHANIEL: "${MYTHTV_PASSWORD_NATHANIEL}"
+      MYTHTV_PASSWORD_ANNA: "${MYTHTV_PASSWORD_ANNA}"
+    volumes:
+      - type: bind
+        source: ./Caddyfile
+        target: /etc/caddy/Caddyfile
+      - ./site:/srv
+      - data:/data
+      - config:/config
+    network_mode: host
+
+volumes:
+  data:
+  config:
