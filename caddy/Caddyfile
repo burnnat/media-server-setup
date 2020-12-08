@@ -1,7 +1,29 @@
-192.168.2.200:80 {
+{
+  debug
+  # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+
+perelandra.na.burnskids.com {
+  root * /srv
+  file_server
+}
+
+code.na.burnskids.com {
+  reverse_proxy localhost:8080
+}
+
+http://docker.na.burnskids.com {
+  reverse_proxy localhost:9000
+}
+
+home.na.burnskids.com {
+  reverse_proxy localhost:8123
+}
+
+tv.na.burnskids.com {
   redir / /mythweb/
   redir /mythweb /mythweb/
-  reverse_proxy /* localhost:6580
+  reverse_proxy /mythweb/* localhost:6580
 
   basicauth {
     nathaniel {$MYTHTV_PASSWORD_NATHANIEL}
