@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  home-assistant:
+    build: ./docker
+    container_name: home-assistant
+    restart: unless-stopped
+
+    volumes:
+      - /home/homeassistant/.ssh:/root/.ssh:ro
+      - /home/homeassistant/.ssh:/home/homeassistant/.ssh:ro
+      - /home/homeassistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /storage/blue:/storage/blue:ro
+      - /storage/green:/storage/green:ro
+      - /storage/iron:/storage/iron:ro
+    network_mode: host
