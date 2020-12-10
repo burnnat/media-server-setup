@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  code-server:
+    build: .
+    container_name: code-server
+    restart: unless-stopped
+
+    environment:
+      PASSWORD: "${PASSWORD}"
+    volumes:
+      - /storage/workspaces:/home/coder
+      - /home/homeassistant/config/custom_components:/home/coder/home-assistant-config/live/custom_components:ro
+      - /home/nathaniel/.gitconfig:/home/coder/.gitconfig:ro
+      - /home/nathaniel/.ssh:/home/coder/.ssh:ro
+    network_mode: host
