@@ -7,9 +7,7 @@ services:
     restart: unless-stopped
 
     volumes:
-      - /home/homeassistant/.ssh:/root/.ssh:ro
-      - /home/homeassistant/.ssh:/home/homeassistant/.ssh:ro
-      - /home/homeassistant/config:/config
+      - /storage/workspaces/home-assistant-config:/config
       - /etc/localtime:/etc/localtime:ro
       - /storage/blue:/storage/blue:ro
       - /storage/green:/storage/green:ro
