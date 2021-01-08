@@ -1,5 +1,5 @@
 {
-  debug
+  # debug
   # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
 }
 
@@ -29,4 +29,9 @@ tv.na.burnskids.com {
     nathaniel {$MYTHTV_PASSWORD_NATHANIEL}
     anna {$MYTHTV_PASSWORD_ANNA}
   }
+}
+
+http://plex.na.burnskids.com {
+  redir / /web/
+  reverse_proxy localhost:32400
 }
