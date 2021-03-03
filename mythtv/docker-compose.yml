@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mythtv:
-    image: sammonsjl/mythtv:30-fixes
+    build: docker
     container_name: mythtv
     restart: unless-stopped
 
@@ -15,6 +15,7 @@ services:
       - /storage/backups:/storage/backups
       - /storage/livetv:/storage/livetv
       - /storage/dvr:/storage/dvr
+      - /storage/tv:/storage/tv
     hostname: mythbackend
     network_mode: host
 
