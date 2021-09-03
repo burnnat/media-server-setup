@@ -10,6 +10,7 @@ services:
       - TZ=America/Detroit
       - CONFIG_MODE=0 # use 1 to enable config mode
     volumes:
+      - config_global:/etc/mythtv
       - config:/home/mythtv:nocopy
       - data:/var/lib/mysql:nocopy
       - /storage/backups:/storage/backups
@@ -19,6 +20,20 @@ services:
     hostname: mythbackend
     network_mode: host
 
+  mythlink:
+    build: mythlink
+    container_name: mythlink
+    restart: unless-stopped
+
+    environment:
+      - TZ=America/Detroit
+    volumes:
+      - config_global:/etc/mythtv:ro,nocopy
+      - /storage/dvr:/storage/dvr:ro
+      - /storage/tv:/storage/tv
+    network_mode: host
+
 volumes:
   config:
+  config_global:
   data:
