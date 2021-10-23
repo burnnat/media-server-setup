@@ -2,7 +2,7 @@ version: '3'
 
 services:
   bitwarden:
-    image: bitwardenrs/server
+    image: vaultwarden/server
     container_name: bitwarden
     restart: unless-stopped
 
