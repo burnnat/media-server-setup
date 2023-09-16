@@ -1,6 +1,10 @@
 {
   # debug
   # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+
+  # Use ZeroSSL instead of LetsEncrypt due to cert errors in Bitwarden Android client ("chain validation failed")
+  acme_ca https://acme.zerossl.com/v2/DV90
+  email nbaccount@burnskids.com
 }
 
 perelandra.na.burnskids.com {
