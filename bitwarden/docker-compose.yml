@@ -2,7 +2,7 @@ version: '3'
 
 services:
   bitwarden:
-    image: vaultwarden/server
+    image: vaultwarden/server:1.29.1
     container_name: bitwarden
     restart: unless-stopped
 
@@ -12,11 +12,12 @@ services:
       - 3011:80
       - 3012:3012
     environment:
+      RUST_BACKTRACE: '1'
       WEBSOCKET_ENABLED: 'true'
       SIGNUPS_ALLOWED: 'true'
 
   bw_backup:
-    image: bruceforce/bw_backup
+    image: bruceforce/vaultwarden-backup
     container_name: backup
     restart: unless-stopped
 
@@ -28,10 +29,10 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - DB_FILE=/data/db.sqlite3
-      - BACKUP_FILE=/data/backup/backup.sqlite3
+      - VW_DATABASE_URL=/data/db.sqlite3
+      - BACKUP_DIR=/data/backup
+      - BACKUP_DIR_PERMISSIONS=700
       - CRON_TIME=0 20 * * *
       - TIMESTAMP=false
       - UID=0
       - GID=0
-      - BACKUP_FILE_PERMISSIONS=700
