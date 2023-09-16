@@ -8,18 +8,18 @@ rm -r /storage/tv/shows
 mkdir /storage/tv/shows
 
 # Copy episode-based shows
-/root/mythlink.pl --link /storage/tv/temp --format "%Ct/S%ss/%T/Season %ss/%T - S%ssE%ep - %S" --separator "#"
+/root/mythlink.pl --link /storage/tv/temp --format "%Ct/S%ss/%T/Season %ss/%T - S%ssE%ep - %S [%c %Y%m%d%H%i%s]" --separator "#"
 rm -r /storage/tv/temp/2/S
 cp -r /storage/tv/temp/2/*/* /storage/tv/shows
 rm -r /storage/tv/temp
 
 # Copy date-based shows
-/root/mythlink.pl --link /storage/tv/temp --format "%Ct/S%ss/%T/Season %oY/%T - %oY-%om-%od - %S" --separator "#"
+/root/mythlink.pl --link /storage/tv/temp --format "%Ct/S%ss/%T/Season %oY/%T - %oY-%om-%od - %S [%c %Y%m%d%H%i%s]" --separator "#"
 cp -r /storage/tv/temp/2/S/* /storage/tv/shows
 rm -r /storage/tv/temp
 
 # Copy TV movies
-/root/mythlink.pl --link /storage/tv/temp --format "%Ct/%T/%T"
+/root/mythlink.pl --link /storage/tv/temp --format "%Ct/%T/%T - [%c %Y%m%d%H%i%s]"
 rm -r /storage/tv/movies
 mv /storage/tv/temp/1 /storage/tv/movies
 rm -r /storage/tv/temp
