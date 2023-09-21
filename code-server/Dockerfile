@@ -1,9 +1,13 @@
 FROM codercom/code-server:latest
 
-# Install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-RUN sudo apt-get install -y \
-	nodejs
+# Install PNPM
+ENV PNPM_HOME=/opt/app/pnpm
+RUN sudo mkdir -p $PNPM_HOME \
+	&& sudo chown coder:coder $PNPM_HOME \
+	&& curl -sL -o $PNPM_HOME/pnpm https://github.com/pnpm/pnpm/releases/download/v8.7.6/pnpm-linux-x64 \
+	&& chmod +x $PNPM_HOME/pnpm
+ENV PATH="$PATH:$PNPM_HOME"
+RUN $PNPM_HOME/pnpm env use --global lts
 
 # Install Python versions
 RUN sudo apt-get update
@@ -51,11 +55,17 @@ RUN sudo apt-get install -y \
 	libhdhomerun4
 
 # Install Webscreens/Puppeteer dependencies
-RUN sudo apt-get install -y \
-	libxcomposite1 \
-	libxtst6 \
-	libnss3 \
-	libcups2 \
-	libatk1.0-0 \
-	libatk-bridge2.0-0 \
-	libgtk-3-0
+RUN sudo apt-get install -y wget gnupg \
+	&& wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
+	&& sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+	&& sudo apt-get update \
+	&& sudo apt-get install -y \
+		google-chrome-stable \
+		fonts-ipafont-gothic \
+		fonts-wqy-zenhei \
+		fonts-thai-tlwg \
+		fonts-kacst \
+		fonts-freefont-ttf \
+		libxss1 \
+		--no-install-recommends \
+	&& sudo rm -rf /var/lib/apt/lists/*
