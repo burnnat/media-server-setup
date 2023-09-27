@@ -42,6 +42,10 @@ http://plex.na.burnskids.com {
   reverse_proxy localhost:32400
 }
 
+test.na.burnskids.com {
+  reverse_proxy /photos/api/alexa localhost:3000
+}
+
 tv.na.burnskids.com {
   redir / /mythweb/
   redir /mythweb /mythweb/
